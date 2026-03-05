@@ -2,13 +2,11 @@ async function runModel(endpoint, inputId, btnElement, isFile = false) {
     const outputBox = document.getElementById(`output-${endpoint}`);
     const inputElement = document.getElementById(inputId);
     
-    // UI Update: Loading State
     const originalHTML = btnElement.innerHTML;
     btnElement.innerHTML = `Processing...`;
     btnElement.disabled = true;
     outputBox.style.display = "none";
 
-    // Data Preparation
     const formData = new FormData();
     
     if (isFile) {
@@ -29,7 +27,6 @@ async function runModel(endpoint, inputId, btnElement, isFile = false) {
     }
 
     try {
-        // Fetch Request to Backend
         const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/`, {
             method: 'POST',
             body: formData
@@ -39,7 +36,7 @@ async function runModel(endpoint, inputId, btnElement, isFile = false) {
 
         if(data.status === "success") {
             outputBox.innerText = data.result;
-            outputBox.style.borderLeftColor = "#10b981"; // Success green
+            outputBox.style.borderLeftColor = "#10b981"; // Green color
             outputBox.style.display = "block";
         }
     } catch (error) {
@@ -52,7 +49,7 @@ async function runModel(endpoint, inputId, btnElement, isFile = false) {
 
 function showError(msg, outputBox, btnElement, originalHTML) {
     outputBox.innerText = msg;
-    outputBox.style.borderLeftColor = "#ef4444"; // Error red
+    outputBox.style.borderLeftColor = "#ef4444"; // Red color
     outputBox.style.display = "block";
     btnElement.innerHTML = originalHTML;
     btnElement.disabled = false;
