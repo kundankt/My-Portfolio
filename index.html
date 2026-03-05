@@ -1,20 +1,75 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>Kundan Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Deep Learning Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>Kundan AI Developer</h1>
+    <header>
+        <h1>AI & Deep Learning Portfolio</h1>
+        <p>Interactive playground for my custom-trained models</p>
+    </header>
 
-<p id="message">Loading message...</p>
+    <div class="portfolio-grid">
+        
+        <div class="project-card">
+            <h2 class="project-title">1. Diffusion Model Gen</h2>
+            <p class="project-desc">Generate high-quality images from text prompts using custom diffusion architecture.</p>
+            <div class="input-group">
+                <label>Enter Prompt:</label>
+                <input type="text" id="diff-input" placeholder="e.g. A futuristic city at sunset...">
+            </div>
+            <button class="action-btn" onclick="runModel('diffusion', 'diff-input', this)">
+                Generate Image
+            </button>
+            <div class="output-box" id="output-diffusion"></div>
+        </div>
 
-<button onclick="loadMessage()">Get Message</button>
+        <div class="project-card">
+            <h2 class="project-title">2. NLP Summarizer</h2>
+            <p class="project-desc">Distill long paragraphs into concise summaries instantly.</p>
+            <div class="input-group">
+                <label>Enter Text:</label>
+                <textarea id="nlp-input" rows="3" placeholder="Paste your long text here..."></textarea>
+            </div>
+            <button class="action-btn" onclick="runModel('nlp', 'nlp-input', this)">
+                Summarize Text
+            </button>
+            <div class="output-box" id="output-nlp"></div>
+        </div>
 
-<script src="script.js"></script>
+        <div class="project-card">
+            <h2 class="project-title">3. Vision Object Detector</h2>
+            <p class="project-desc">Upload an image to detect and classify objects accurately.</p>
+            <div class="input-group">
+                <label>Upload Image:</label>
+                <input type="file" id="vision-input" accept="image/*">
+            </div>
+            <button class="action-btn" onclick="runModel('vision', 'vision-input', this, true)">
+                Analyze Image
+            </button>
+            <div class="output-box" id="output-vision"></div>
+        </div>
 
+        <div class="project-card">
+            <h2 class="project-title">4. PyTorch Dataloader & Predictor</h2>
+            <p class="project-desc">Input a batch size or numerical value to forecast trends using Deep Learning.</p>
+            <div class="input-group">
+                <label>Input Value:</label>
+                <input type="number" id="predict-input" placeholder="Enter a number (e.g., 10)">
+            </div>
+            <button class="action-btn" onclick="runModel('predict', 'predict-input', this)">
+                Run Prediction
+            </button>
+            <div class="output-box" id="output-predict"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
